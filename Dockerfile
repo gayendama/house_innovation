@@ -1,6 +1,6 @@
 #Utilisation de l'image node comme base
 FROM node:10.13.0 as builder
-LABEL maintenair="ndamagaye"
+LABEL maintenair="ndamagaye" email="ndamagaye64@gmail.com"
 # Définition du répertoire de travail dans le conteneur
 WORKDIR /app
 
