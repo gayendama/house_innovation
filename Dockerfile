@@ -5,7 +5,6 @@ LABEL maintenair="ndamagaye" email="ndamagaye64@gmail.com"
 WORKDIR /app
 
 # Copie des fichiers de configuration et du code source
-COPY *.json  ./
 COPY . .
 
 # Installation des dépendances
@@ -14,11 +13,10 @@ RUN npm install
 # Construction de l'application
 RUN npm run build
 
-FROM nginx:latest
-COPY --from=builder /app/dist/angular-dashboard-ui  /usr/share/nginx/html
+FROM httpd:2.4.58
+COPY --from=builder /app/dist/angular-dashboard-ui  /usr/local/apache2/htdocs/
 EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["httpd", "-D", "FOREGROUND"]
 
 
 
