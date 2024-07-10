@@ -32,7 +32,7 @@ pipeline{
         steps{
             script{
                 
-                sh "docker run --name ${IMAGE_NAME}${BUILD_ID} -d -p ${PortContainer}:${PortApp} ${IMAGE_TAG_DEV}"
+                sh "docker run --name ${IMAGE_NAME}${BUILD_ID} -d -p ${PortContainer}:${PortApp} ${IMAGE_TAG}"
                 sh "curl localhost:${PortContainer} | grep -q 'Author: Roody95'"
                 sh "docker stop ${IMAGE_NAME}${BUILD_ID}"
                 sh "docker rm ${IMAGE_NAME}${BUILD_ID}"
@@ -50,17 +50,7 @@ pipeline{
     }
      
 
-    stage('supression des images en local'){
-          steps{
-            script{
-              sh '''docker images |grep "'''+DOCKER_ID+'''" | awk '{ print $3 }' | xargs --no-run-if-empty docker rmi -f'''
-              sh '''docker images | awk '/^<none>/ { print $3 }' | xargs --no-run-if-empty docker rmi -f'''
-              sh 'echo "image suprimé"'
-            }
-          }
-        }
-
-
+    
 }
     
 }
