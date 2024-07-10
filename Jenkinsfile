@@ -5,6 +5,7 @@ prérequis:
 3) installer "trivy" sur le serveur jenkins 
 */
 def PROJET = "Test House innovation"
+def ID_DOCKER = ndamagaye268
 def IMAGE_NAME = "house-innovation"
 def IMAGE_TAG = "latest"
 def PortApp = 80
@@ -23,7 +24,7 @@ pipeline{
     stage('Build Docker Image'){
         steps{
             script{
-                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                sh "docker build -t ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
     }
@@ -32,10 +33,10 @@ pipeline{
         steps{
             script{
                 
-                sh "docker run --name ${IMAGE_NAME}${BUILD_ID} -d -p ${PortContainer}:${PortApp} ${IMAGE_TAG}"
+                sh "docker run --name ${IMAGE_NAME} -d -p ${PortContainer}:${PortApp} ${IMAGE_NAME}:${IMAGE_TAG}"
                 sh "curl localhost:${PortContainer} | grep -q 'Author: Roody95'"
-                sh "docker stop ${IMAGE_NAME}${BUILD_ID}"
-                sh "docker rm ${IMAGE_NAME}${BUILD_ID}"
+                sh "docker stop ${IMAGE_NAME}"
+                sh "docker rm ${IMAGE_NAME}"
 
             }
         }
@@ -44,7 +45,7 @@ pipeline{
     stage('scan vulnerabilte image'){
         steps{
             script{
-                sh "trivy image --no-progress --exit-code 1 --severity HIGH ${IMAGE_TAG}"
+                sh "trivy image --no-progress --exit-code 1 --severity HIGH ${IMAGE_NAME}:${IMAGE_TAG}"
             }
         }
     }
