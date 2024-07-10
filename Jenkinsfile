@@ -23,7 +23,7 @@ pipeline{
     stage('Build Docker Image'){
         steps{
             script{
-                sh "docker build -t ${IMAGE_TAG_DEV} ."
+                sh "docker build -t ${IMAGE_TAG} ."
             }
         }
     }
@@ -44,7 +44,7 @@ pipeline{
     stage('scan vulnerabilte image'){
         steps{
             script{
-                sh "trivy image --no-progress --exit-code 1 --severity HIGH ${IMAGE_TAG_DEV}"
+                sh "trivy image --no-progress --exit-code 1 --severity HIGH ${IMAGE_TAG}"
             }
         }
     }
