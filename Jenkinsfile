@@ -5,7 +5,7 @@ prérequis:
 3) installer "trivy" sur le serveur jenkins 
 */
 def PROJET = "Test House innovation"
-def ID_DOCKER = ndamagaye268
+def ID_DOCKER = "ndamagaye268"
 def IMAGE_NAME = "house-innovation"
 def IMAGE_TAG = "latest"
 def PortApp = 80
