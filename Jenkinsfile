@@ -6,8 +6,7 @@ prérequis:
 */
 def PROJET = "Test House innovation"
 def IMAGE_NAME = "house-innovation"
-def IMAGE_TAG_DEV = DOCKER_ID+"/"+IMAGE_NAME+"-dev:$BUILD_ID"
-def IMAGE_TAG_PROD = DOCKER_ID+"/"+IMAGE_NAME+"-prod:$BUILD_ID"
+def IMAGE_TAG = "latest"
 def PortApp = 80
 def PortContainer = 8200
 
