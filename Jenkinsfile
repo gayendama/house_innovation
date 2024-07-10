@@ -60,4 +60,4 @@ stage('Push Image sur DockerHub') {
     
 }
     
-}
+
