@@ -13,13 +13,9 @@ def PortContainer = 8200
 
 pipeline{
     agent any
-  stages{
-
-    /*stage('Clone Repository'){
-        steps{
-            git (branch: 'main', credentialsId: credential, url: repository)
-        }
-    }*/
+    environment {
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+    }
 
     stage('Build Docker Image'){
         steps{
@@ -46,7 +42,7 @@ stage('Push Image sur DockerHub') {
                 script {
                     // Connexion à Docker Hub et pousser l'image
                     sh '''
-                        echo (j3H?K(84!tCurp | docker login -u ${ID_DOCKER} --password-stdin
+                        echo ${DOCKER_PASSWORD} | docker login -u ${ID_DOCKER} --password-stdin
                         docker push ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}
                     '''
                 }
