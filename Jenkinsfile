@@ -16,7 +16,7 @@ pipeline{
     environment {
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
     }
-
+    stages {
     stage('Build Docker Image'){
         steps{
             script{
@@ -58,6 +58,7 @@ stage('Push Image sur DockerHub') {
      
 
     
+}
 }
     
 
