@@ -40,16 +40,13 @@ pipeline{
 stage('Push Image sur DockerHub') {
             steps {
                 script {
-                     sh '''
-                        mkdir -p ~/.docker
-                        echo '{"auths": {"https://index.docker.io/v1/": {"auth": "'$(echo -n "${ID_DOCKER}:${DOCKER_PASSWORD}" | base64 | tr -d '\n')'"}}}' > ~/.docker/config.json
+                      // Login to Docker Hub
+                    sh '''
+                        echo ${DOCKER_PASSWORD} | docker login -u ${ID_DOCKER} --password-stdin
                     '''
 
                     // Pousser l'image sur Docker Hub
                     sh "docker push ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
-
-                    // Supprimer le fichier de configuration Docker temporaire
-                    sh 'rm -rf ~/.docker'
                 }
             }
         }
