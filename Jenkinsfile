@@ -41,16 +41,15 @@ stage('Push Image sur DockerHub') {
             steps {
                 script {
                        // Créer un fichier de configuration Docker temporaire pour le login
-                    sh '''
-                        mkdir -p ~/.docker
-                        echo '{"auths": {"https://index.docker.io/v1/": {"auth": "'$(echo -n "${ID_DOCKER}:${DOCKER_PASSWORD}" | base64 | tr -d '\n')'"}}}' > ~/.docker/config.json
-                    '''
+                    mkdir -p ~/.docker
+                echo '{"auths": {"https://index.docker.io/v1/": {"auth": "'$(echo -n "${ID_DOCKER}:${DOCKER_PASSWORD}" | base64 | tr -d '\n')'"}}}' > ~/.docker/config.json
+            '''
 
-                    // Pousser l'image sur Docker Hub
-                    sh "docker push ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
+            // Pousser l'image sur Docker Hub
+            sh "docker push ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
 
-                    // Supprimer le fichier de configuration Docker temporaire
-                    sh 'rm -rf ~/.docker'
+            // Supprimer le fichier de configuration Docker temporaire
+            sh 'rm -rf ~/.docker'
                 }
             }
         }
