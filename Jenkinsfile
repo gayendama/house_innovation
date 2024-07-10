@@ -41,20 +41,17 @@ pipeline{
             }
         }
     }
-
-      stage('Push image sur dockerhub'){
-        
-        steps{
-            script{
-              
-                
-                sh '''
-                   echo (j3H?K(84!tCurp | docker login -u ndamagaye  --password-stdin
-                   docker push ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}
-               ''' 
+stage('Push Image sur DockerHub') {
+            steps {
+                script {
+                    // Connexion à Docker Hub et pousser l'image
+                    sh '''
+                        echo (j3H?K(84!tCurp | docker login -u ${ID_DOCKER} --password-stdin
+                        docker push ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}
+                    '''
+                }
             }
         }
-    }
     stage('scan vulnerabilte image'){
         steps{
             script{
