@@ -40,9 +40,9 @@ pipeline{
 stage('Push Image sur DockerHub') {
             steps {
                 script {
-                    sh '''
+                     sh '''
                         mkdir -p ~/.docker
-                        echo '{"auths": {"https://index.docker.io/v1/": {"auth": "'$(echo -n "${ID_DOCKER}:${DOCKER_PASSWORD}" | base64)'"}}}' > ~/.docker/config.json
+                        echo '{"auths": {"https://index.docker.io/v1/": {"auth": "'$(echo -n "${ID_DOCKER}:${DOCKER_PASSWORD}" | base64 | tr -d '\n')'"}}}' > ~/.docker/config.json
                     '''
 
                     // Pousser l'image sur Docker Hub
