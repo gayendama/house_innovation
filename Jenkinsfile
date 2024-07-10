@@ -47,9 +47,11 @@ pipeline{
         steps{
             script{
               
-                sh "docker login -u ${ID_DOCKER} -p (j3H?K(84!tCurp --password-stdin" 
-                sh "docker push ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
-                 
+                
+                sh '''
+                   echo (j3H?K(84!tCurp | docker login -u ndamagaye  --password-stdin
+                   docker push ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}
+               ''' 
             }
         }
     }
