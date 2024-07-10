@@ -5,7 +5,7 @@ prérequis:
 3) installer "trivy" sur le serveur jenkins 
 */
 def PROJET = "Test House innovation"
-def ID_DOCKER = "ndamagaye268"
+def ID_DOCKER = "ndamagaye"
 def IMAGE_NAME = "house-innovation"
 def IMAGE_TAG = "latest"
 def PortApp = 80
@@ -42,7 +42,7 @@ stage('Push Image sur DockerHub') {
                 script {
                       // Login to Docker Hub
                     sh '''
-                        echo ${DOCKER_PASSWORD} | docker login -u ${ID_DOCKER} --password-stdin
+                        echo Sokhn@diaw | docker login -u ${ID_DOCKER} --password-stdin
                     '''
 
                     // Pousser l'image sur Docker Hub
