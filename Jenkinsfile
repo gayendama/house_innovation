@@ -1,4 +1,4 @@
-@Library(sharelibrary) _
+@Library('sharelibrary') _
 
 mypipeline(
     PROJET: "Test House innovation",
