@@ -1,6 +1,6 @@
-@Library('your-shared-library') _
+@Library(sharelibrary) _
 
-myPipeline(
+mypipeline(
     PROJET: "Test House innovation",
     ID_DOCKER: "ndamagaye268",
     IMAGE_NAME: "house-innovation",
