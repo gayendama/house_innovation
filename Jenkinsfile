@@ -1,3 +1,2 @@
 @Library('gayelibjenkins') _
-
 mypipeline()
