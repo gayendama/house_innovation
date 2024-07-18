@@ -1,3 +1,3 @@
-@Library('gayelibjenkins') _
+@Library('my-shared-library') _
 
-mypipeline()
+myPipeline(imageName: 'myImage', portContainer: '8080', portApp: '80', imageTag: 'latest')
