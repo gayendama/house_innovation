@@ -1,3 +1,3 @@
 @Library('gayelibjenkins') _
 
-mypipeline()
+mypipeline(imageName: 'house-innovation', portContainer: '8200', portApp: '80', imageTag: 'latest')
