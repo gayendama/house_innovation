@@ -1,2 +1,9 @@
 @Library('gayelibjenkins') _
-mypipeline(imageName: 'house-innovation', portContainer: '8200', portApp: '80', imageTag: 'latest')
+mypipeline(
+    PROJET: "Test House innovation",
+    ID_DOCKER: "ndamagaye268",
+    IMAGE_NAME: "house-innovation",
+    IMAGE_TAG: "latest",
+    PortApp: 80,
+    PortContainer: 8200
+)
