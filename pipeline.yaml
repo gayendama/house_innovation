@@ -1,0 +1,3 @@
+IMAGE_NAME: house_innovation
+PortApp: 80
+PortContainer: 8200
