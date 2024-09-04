@@ -1,2 +1,2 @@
-@Library('gayelib') _
+@Library('sharelibrjenkins') _
 mypepiline()
