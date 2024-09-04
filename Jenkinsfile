@@ -1,2 +1,2 @@
-@Library('sharelibrjenkins') _
+@Library('gayelib') _
 mypipeline()
