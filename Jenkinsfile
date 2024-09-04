@@ -1,2 +1,2 @@
 @Library('gayelib') _
-mypipeline()
+mypepiline()
