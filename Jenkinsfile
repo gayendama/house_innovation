@@ -1,2 +1,2 @@
 @Library('sharelibrjenkins') _
-mypepiline()
+mypipeline()
